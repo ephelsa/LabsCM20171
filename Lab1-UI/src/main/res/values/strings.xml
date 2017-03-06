@@ -53,7 +53,7 @@
     <string name="void_pais">País vacío</string>
     <string name="void_ciudad">Ciudad vacía</string>
     <string name="void_dirección">Dirección vacía</string>
-    
+
     <!-- Ciudades de Colombia -->
     <string name="Bogotá" translatable="false">Bogotá</string>
     <string name="Medellín" translatable="false">Medellín</string>
