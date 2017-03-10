@@ -33,12 +33,8 @@ Cambiar entre branch:
 
 Se verifica que sí estemos en este branch, utilizando **`git branch`**, y aparecerá algo como:
 
-~~~
-
-* `VersionesLab2`
+*\ `VersionesLab2`
 `master`
-
-~~~
 
 Y a la hora de hacerle `push` a los archivos basta con solo escribir:
 
