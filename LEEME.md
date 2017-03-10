@@ -1,7 +1,7 @@
 ##Versiones del Lab-2 ##
 
 > Un branch es una ramificación del proyecto.
-> Aquí encontrarás más información sobre [branch](https://styde.net/sistema-de-ramificaciones-en-git/) 
+> Aquí encontrarás más información sobre [branch.](https://styde.net/sistema-de-ramificaciones-en-git/) 
 
 ###Nombre del branch: VersionesLab2
 
@@ -33,7 +33,7 @@ Cambiar entre branch:
 
 Se verifica que sí estemos en este branch, utilizando **`git branch`**, y aparecerá algo como:
 
-*\ `VersionesLab2`
+* `VersionesLab2`  
 `master`
 
 Y a la hora de hacerle `push` a los archivos basta con solo escribir:
@@ -44,4 +44,4 @@ Una vez terminado el proyecto final, este se mostrará en el *branch* `master`. 
 ___
 
 > **Nota:** *LEEME.md* está en lenguaje de marcado MarkDown.
-> [Más información de MarkDown](https://markdown.es)
+> [Más información de MarkDown.](https://markdown.es)
