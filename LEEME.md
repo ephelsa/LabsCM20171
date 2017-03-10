@@ -35,7 +35,7 @@ Se verifica que sí estemos en este branch, utilizando **`git branch`**, y apare
 
 ~~~
 
-\* `VersionesLab2`
+* `VersionesLab2`
 `master`
 
 ~~~
