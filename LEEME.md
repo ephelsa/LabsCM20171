@@ -14,7 +14,9 @@ Cambiar entre branch:
 
 Se verifica que sí estemos en este branch, utilizando **`git branch`**, y aparecerá algo como:
 
-`*\ VersionesLab2`
+~~~
+`* VersionesLab2`
 `master`
+~~~
 
 Y lo que resta es subir los archivos de forma normal, con la diferencia de que el proyecto final se mostrará en el *branch* `master`.
