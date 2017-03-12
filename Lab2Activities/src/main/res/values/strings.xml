@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">LAB2-UI</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="txPasswordLogin">Contraseña</string>
-    <string name="txUserLogin">Usuario</string>
-    <string name="txIngLogin">Ingresar</string>
-
-
-</resources>
