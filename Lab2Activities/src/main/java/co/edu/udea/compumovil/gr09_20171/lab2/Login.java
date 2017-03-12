@@ -38,6 +38,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 log();
                 break;
             case R.id.bttReg:
+                Intent intent = new Intent().setClass(Login.this, Registro.class);
+                startActivity(intent);
+
                 break;
         }
     }
@@ -50,14 +53,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void run() {
                     //iniciar siguiente actividad
-                    /*Intent mainIntent = new Intent().setClass(
-                            Login.this, Test.class);
-                    startActivity(mainIntent);*/
+                    Intent mainIntent = new Intent().setClass(
+                            Login.this, test.class);
+                    startActivity(mainIntent);
+                    finish();
                 }
             };
             Timer timer = new Timer();
             //tiempo en decimas
-            timer.schedule(task, 3000);
+            timer.schedule(task, 1000);
         }
     }
 

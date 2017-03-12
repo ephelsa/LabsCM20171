@@ -16,6 +16,7 @@ import java.util.TimerTask;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
     private Button btnReg;
+    private Button btnCancel;
     private EditText username;
     private EditText emailR;
     private EditText password;
@@ -27,6 +28,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_registro);
         btnReg = (Button) findViewById(R.id.btnIngReg);
         btnReg.setOnClickListener(this);
+        btnCancel=(Button)findViewById(R.id.btnCancelar);
+        btnCancel.setOnClickListener(this);
         username = (EditText) findViewById(R.id.userRegistro);
         emailR = (EditText) findViewById(R.id.correoRegistro);
         password = (EditText) findViewById(R.id.passwordR);
@@ -42,7 +45,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 guardar(v);
                 break;
             case R.id.btnCancelar:
-                //Falta funcion para regresar a la actividad anterior
+                Intent intent=new Intent().setClass(Registro.this,Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
                 break;
         }
     }
@@ -65,12 +71,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         //iniciar siguiente actividad
                         Intent mainIntent = new Intent().setClass(
                                 Registro.this, Login.class);
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(mainIntent);
+                        finish();
                     }
                 };
                 Timer timer = new Timer();
                 //tiempo en decimas
-                timer.schedule(task, 3000);
+                timer.schedule(task, 1000);
             } else {
                 passwordC.setError(getString(R.string.ErrorPass2));
             }

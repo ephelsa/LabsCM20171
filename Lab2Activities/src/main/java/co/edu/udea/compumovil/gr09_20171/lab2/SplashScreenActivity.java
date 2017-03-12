@@ -30,6 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Intent mainIntent = new Intent().setClass(
                         SplashScreenActivity.this, Login.class);
                 startActivity(mainIntent);
+                finish();
             }
         };
         Timer timer = new Timer();

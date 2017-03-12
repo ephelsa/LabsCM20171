@@ -26,7 +26,8 @@
         <activity
             android:name=".Login"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Registro"></activity>
+        <activity android:name=".Registro" />
+        <activity android:name=".test"></activity>
     </application>
 
 </manifest>

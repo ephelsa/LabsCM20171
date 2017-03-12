@@ -15,9 +15,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users(user text primary key not null,email text not null,password text not null)");
-
-        //db.execSQL("create table events(id int primary key autoincrement,photo text , name text not null,descripcion text, puntuacion double");
+        db.execSQL("create table users(user text primary key not null,email text not null,password text not null,photo text,edad int)");
+        db.execSQL("create table events(id int primary key autoincrement,photo text , name text not null,descripcion text, puntuacion double");
     }
 
     @Override
