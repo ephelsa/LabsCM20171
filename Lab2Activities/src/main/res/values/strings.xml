@@ -1,9 +1,28 @@
 <resources>
     <string name="app_name">LAB2-UI</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="txPasswordLogin">Contraseña</string>
+
+    <!--Actividad de login-->
+    <string name="txPasswordLogin">ContraseÃ±a</string>
     <string name="txUserLogin">Usuario</string>
     <string name="txIngLogin">Ingresar</string>
+    <!-- Actividad Registro -->
+    <string name="Email">Correo</string>
+    <string name="PasswordC">Confirmar contraseÃ±a</string>
+    <string name="txIngReg">Registrar</string>
+    <string name="cancelar">Cancelar</string>
+
+
+    <!-- Errores y confirmaciones  -->
+    <string name="ErrorUsuario">El usuario no puede ser vacio</string>
+    <string name="ErrorCorreo">El correo no puede ser vacio</string>
+    <string name="ErrorPass">La contraseÃ±a no puede ser vacio</string>
+    <string name="ErrorPass2">Las contraseÃ±as no son iguales</string>
+    <string name="OkUserR">Registro exitoso</string>
+    <string name="ErrorUserRep">El nombre de usuario ya esta en uso</string>
+    <string name="ErrorCorreoR">EL correo ya esta en uso</string>
+    <string name="LoginOk">"Bienvenido "</string>
+    <string name="ErrorLogin">Usuario o contraseÃ±a incorrecto</string>
 
 
 </resources>
+
