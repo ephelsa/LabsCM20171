@@ -27,7 +27,11 @@
             android:name=".Login"
             android:theme="@style/AppTheme" />
         <activity android:name=".Registro" />
-        <activity android:name=".test"></activity>
+        <activity android:name=".test" />
+        <activity
+            android:name=".Navegacion"
+            android:label="@string/title_activity_navegacion"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -66,8 +66,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private boolean validar(String u, String p) {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,
-                "compumovil", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         Cursor fila = bd.rawQuery("select password from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
