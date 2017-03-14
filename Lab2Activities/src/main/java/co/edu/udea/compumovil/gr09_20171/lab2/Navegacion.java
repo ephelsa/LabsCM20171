@@ -1,8 +1,13 @@
 package co.edu.udea.compumovil.gr09_20171.lab2;
 
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -18,14 +23,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+
 public class Navegacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private final String filename = "registro.txt";
+    private String username;
+    private FileOutputStream outputStream;
 
     private Fragment perfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            BufferedReader fin = new BufferedReader(new InputStreamReader(
+                    openFileInput(filename)));
+
+            username = fin.readLine();
+            fin.close();
+        } catch (Exception ex) {
+            Log.e("Ficheros", "Error al leer fichero desde memoria interna");
+        }
         setContentView(R.layout.activity_navegacion);
         setTitle(R.string.title_activity_navegacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -55,8 +76,9 @@ public class Navegacion extends AppCompatActivity
         TextView nav_header_email;
         nav_header_user = (TextView) header.findViewById(R.id.navigation_header_container_user);
         nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
-        nav_header_user.setText(getIntent().getExtras().getString("usuario"));
-        nav_header_email.setText("Aquí iría el correo de " + nav_header_user.getText());
+        nav_header_user.setText(username);
+        nav_header_email.setText(getBdCorreo());
+
     }
 
     @Override
@@ -119,12 +141,33 @@ public class Navegacion extends AppCompatActivity
             setTitle(R.string.nav_about);
 
         } else if (id == R.id.nav_logout) {
-            setTitle(R.string.nav_logout);
-
+            //setTitle(R.string.nav_logout);
+            try {
+                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                outputStream.write("".getBytes());
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Intent mainIntent = new Intent().setClass(
+                    Navegacion.this, Login.class);
+            startActivity(mainIntent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private String getBdCorreo() {
+        String correo = "";
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select email from users where user=\"" + username + "\"", null);
+        if (fila.moveToFirst()) {
+            correo = fila.getString(0);
+        }
+        return correo;
     }
 }
