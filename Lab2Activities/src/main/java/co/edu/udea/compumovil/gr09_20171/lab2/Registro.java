@@ -57,7 +57,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private void guardar(View v) {
         //obtenemos los valores de los campos de texto
         String user = username.getText().toString();
-        String email = emailR.getText().toString();
+        final String email = emailR.getText().toString();
         String pass = password.getText().toString();
         String pass2 = passwordC.getText().toString();
         //validamos que no exista el usuario o el correo , tambien que los campos esten llenos
@@ -73,6 +73,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                                 Registro.this, Login.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(mainIntent);
+
                         finish();
                     }
                 };

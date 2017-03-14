@@ -22,8 +22,14 @@
     <string name="ErrorCorreoR">EL correo ya esta en uso</string>
     <string name="LoginOk">"Bienvenido "</string>
     <string name="ErrorLogin">Usuario o contraseña incorrecto</string>
-    <string name="title_activity_navegacion">Navegacion</string>
 
+    <!-- Navigation Drawer -->
+    <string name="nav_perfil">Perfil</string>
+    <string name="nav_eventos">Eventos</string>
+    <string name="nav_configuraciones">Configuraciones</string>
+    <string name="nav_about">Acerca de</string>
+    <string name="nav_logout">Cerrar sesión</string>
+    <string name="title_activity_navegacion">Navegacion</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

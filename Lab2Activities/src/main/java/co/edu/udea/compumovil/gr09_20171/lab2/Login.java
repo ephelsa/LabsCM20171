@@ -46,7 +46,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void log() {
-        String usuario = user.getText().toString();
+        final String usuario = user.getText().toString();
+
         String password = pass.getText().toString();
         if (validar(usuario, password)) {
             TimerTask task = new TimerTask() {
@@ -54,7 +55,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 public void run() {
                     //iniciar siguiente actividad
                     Intent mainIntent = new Intent().setClass(
-                            Login.this, test.class);
+                            Login.this, Navegacion.class);
+                    mainIntent.putExtra("usuario", usuario);
                     startActivity(mainIntent);
                     finish();
                 }

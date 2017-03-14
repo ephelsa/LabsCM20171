@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Navegacion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +23,7 @@ public class Navegacion extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navegacion);
+        setTitle(R.string.title_activity_navegacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,6 +44,16 @@ public class Navegacion extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Editar el Head del Navigation Drawer
+        View header = navigationView.getHeaderView(0);
+        TextView nav_header_user;
+        TextView nav_header_email;
+        nav_header_user = (TextView) header.findViewById(R.id.navigation_header_container_user);
+        nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
+        nav_header_user.setText(getIntent().getExtras().getString("usuario"));
+        nav_header_email.setText("Aquí iría el correo de " + nav_header_user.getText() + getIntent().getExtras().getString("email"));
+
     }
 
     @Override
@@ -56,6 +70,7 @@ public class Navegacion extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navegacion, menu);
+
         return true;
     }
 
@@ -80,17 +95,22 @@ public class Navegacion extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_perfil) {
+            setTitle(R.string.nav_perfil);
 
-        } else if (id == R.id.nav_slideshow) {
+            Toast.makeText(this, getIntent().getExtras().getString("usuario"), Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_eventos) {
+            setTitle(R.string.nav_eventos);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_configuraciones) {
+            setTitle(R.string.nav_configuraciones);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_about) {
+            setTitle(R.string.nav_about);
+
+        } else if (id == R.id.nav_logout) {
+            setTitle(R.string.nav_logout);
 
         }
 
