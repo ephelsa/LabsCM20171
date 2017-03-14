@@ -20,16 +20,13 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
-            BufferedReader fin =new BufferedReader(new InputStreamReader(
+        try {
+            BufferedReader fin = new BufferedReader(new InputStreamReader(
                     openFileInput(filename)));
 
             username = fin.readLine();
             fin.close();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.e("Ficheros", "Error al leer fichero desde memoria interna");
         }
         // Set portair orientacion
@@ -43,12 +40,12 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //iniciar siguiente actividad
-                if(username==null||username.equals("")) {
+                if (username == null || username.equals("")) {
                     Intent mainIntent = new Intent().setClass(
                             SplashScreenActivity.this, Login.class);
                     startActivity(mainIntent);
-                }else{
-                    Intent mainIntent = new Intent().setClass(SplashScreenActivity.this,Navegacion.class);
+                } else {
+                    Intent mainIntent = new Intent().setClass(SplashScreenActivity.this, Navegacion.class);
                     startActivity(mainIntent);
                 }
 
