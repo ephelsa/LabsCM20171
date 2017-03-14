@@ -1,5 +1,6 @@
 package co.edu.udea.compumovil.gr09_20171.lab2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,6 +20,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button registrar;
     private EditText user;
     private EditText pass;
+    private final String filename="registro.txt";
+    private FileOutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
+                    try {
+                        outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                        outputStream.write(usuario.getBytes());
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     //iniciar siguiente actividad
                     Intent mainIntent = new Intent().setClass(
                             Login.this, Navegacion.class);

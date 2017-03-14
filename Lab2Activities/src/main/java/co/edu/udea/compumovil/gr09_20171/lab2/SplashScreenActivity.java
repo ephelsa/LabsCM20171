@@ -4,18 +4,34 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private static final long SPLASH_SCREEN_DELAY = 3000;
+    private final String filename = "registro.txt";
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
+            BufferedReader fin =new BufferedReader(new InputStreamReader(
+                    openFileInput(filename)));
 
+            username = fin.readLine();
+            fin.close();
+        }
+        catch (Exception ex)
+        {
+            Log.e("Ficheros", "Error al leer fichero desde memoria interna");
+        }
         // Set portair orientacion
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //esconder barra de titulo
@@ -27,9 +43,16 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //iniciar siguiente actividad
-                Intent mainIntent = new Intent().setClass(
-                        SplashScreenActivity.this, Login.class);
-                startActivity(mainIntent);
+                if(username==null||username.equals("")) {
+                    Intent mainIntent = new Intent().setClass(
+                            SplashScreenActivity.this, Login.class);
+                    startActivity(mainIntent);
+                }else{
+                    Intent mainIntent = new Intent().setClass(SplashScreenActivity.this,Navegacion.class);
+                    startActivity(mainIntent);
+                }
+
+
                 finish();
             }
         };
