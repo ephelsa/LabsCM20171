@@ -48,6 +48,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 Intent intent=new Intent().setClass(Registro.this,Login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+
                 finish();
                 break;
         }
