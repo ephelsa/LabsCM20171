@@ -34,16 +34,13 @@ public class Navegacion extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
-            BufferedReader fin =new BufferedReader(new InputStreamReader(
-                                    openFileInput(filename)));
+        try {
+            BufferedReader fin = new BufferedReader(new InputStreamReader(
+                    openFileInput(filename)));
 
             username = fin.readLine();
             fin.close();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.e("Ficheros", "Error al leer fichero desde memoria interna");
         }
         setContentView(R.layout.activity_navegacion);
@@ -153,13 +150,13 @@ public class Navegacion extends AppCompatActivity
         return true;
     }
 
-    private String getBdCorreo(){
-        String correo="";
+    private String getBdCorreo() {
+        String correo = "";
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         Cursor fila = bd.rawQuery("select email from users where user=\"" + username + "\"", null);
         if (fila.moveToFirst()) {
-            correo= fila.getString(0);
+            correo = fila.getString(0);
         }
         return correo;
     }
