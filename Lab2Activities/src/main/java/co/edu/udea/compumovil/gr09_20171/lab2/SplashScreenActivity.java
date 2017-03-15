@@ -13,7 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private static final long SPLASH_SCREEN_DELAY = 3000;
+    private static final long SPLASH_SCREEN_DELAY = 1000;
     private final String filename = "registro.txt";
     private String username;
 

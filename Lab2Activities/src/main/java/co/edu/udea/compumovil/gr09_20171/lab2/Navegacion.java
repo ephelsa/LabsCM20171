@@ -129,7 +129,6 @@ public class Navegacion extends AppCompatActivity
 
             fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
 
-            Toast.makeText(this, getIntent().getExtras().getString("usuario"), Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_eventos) {
             setTitle(R.string.nav_eventos);

@@ -67,7 +67,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     //iniciar siguiente actividad
                     Intent mainIntent = new Intent().setClass(
                             Login.this, Navegacion.class);
-                    mainIntent.putExtra("usuario", usuario);
                     startActivity(mainIntent);
                     finish();
                 }
