@@ -21,6 +21,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText user;
     private EditText pass;
     private final String filename="registro.txt";
+    final private String usuario = getUser();
+    private String setUsuario = "";
     private FileOutputStream outputStream;
 
     @Override
@@ -40,6 +42,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.bttLogin:
                 log();
+
                 break;
             case R.id.bttReg:
                 Intent intent = new Intent().setClass(Login.this, Registro.class);
@@ -50,9 +53,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void log() {
-        final String usuario = user.getText().toString();
-
+        setUser(user.getText().toString());
         String password = pass.getText().toString();
+
         if (validar(usuario, password)) {
             TimerTask task = new TimerTask() {
                 @Override
@@ -95,6 +98,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         bd.close();
         return false;
+    }
+
+    private void setUser (String s) {
+        setUsuario  = s;
+    }
+
+    protected String getUser () {
+        return setUsuario;
     }
 }
 
