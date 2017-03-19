@@ -27,8 +27,8 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 
-public class Navegacion extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private final String filename = "registro.txt";
     private String username;
     private FileOutputStream outputStream;
@@ -39,8 +39,7 @@ public class Navegacion extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            BufferedReader fin = new BufferedReader(new InputStreamReader(
-                    openFileInput(filename)));
+            BufferedReader fin = new BufferedReader(new InputStreamReader(openFileInput(filename)));
 
             username = fin.readLine();
             fin.close();
@@ -119,7 +118,6 @@ public class Navegacion extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TextView asdasd;
 
         int id = item.getItemId();
 
@@ -148,6 +146,7 @@ public class Navegacion extends AppCompatActivity
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             Intent mainIntent = new Intent().setClass(
                     Navegacion.this, Login.class);
             startActivity(mainIntent);
@@ -164,9 +163,11 @@ public class Navegacion extends AppCompatActivity
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         Cursor fila = bd.rawQuery("select email from users where user=\"" + username + "\"", null);
+
         if (fila.moveToFirst()) {
             correo = fila.getString(0);
         }
+
         return correo;
     }
 }
