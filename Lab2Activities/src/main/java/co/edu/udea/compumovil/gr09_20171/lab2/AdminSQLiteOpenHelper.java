@@ -39,115 +39,115 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
-    protected String getEmailUser(String u){
-        String res="";
+    protected String getEmailUser(String u) {
+        String res = "";
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select email from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
-            res=fila.getString(0);
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected String getEdadUser(String u,int dat){
-        String res="";
+    protected String getEdadUser(String u, int dat) {
+        String res = "";
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select edad from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
-            res=fila.getString(0);
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected byte[] getFotoUser(String u){
-        byte []res;
+    protected byte[] getFotoUser(String u) {
+        byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select foto from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
-            res=fila.getBlob(0);
-        }else{
-            res=null;
+            res = fila.getBlob(0);
+        } else {
+            res = null;
         }
         return res;
 
     }
 
-    protected String getPassUser(String u){
-        String res="";
+    protected String getPassUser(String u) {
+        String res = "";
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select password from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
-            res=fila.getString(0);
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected byte[] getFotoEvent(int id){
+    protected byte[] getFotoEvent(int id) {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select photo from events where id=" + id, null);
         if (fila.moveToFirst()) {
-            res=fila.getBlob(0);
-        }else res=null;
+            res = fila.getBlob(0);
+        } else res = null;
         return res;
     }
 
-    protected String getNameEvent(int id){
-        String res="";
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select name from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getString(0);
+    protected String getNameEvent(int id) {
+        String res = "";
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select name from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected String getDescripcionEvent(int id){
-        String res="";
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select descripcion from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getString(0);
+    protected String getDescripcionEvent(int id) {
+        String res = "";
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select descripcion from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected float getPuntuacionEvent(int id){
+    protected float getPuntuacionEvent(int id) {
         float res;
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select puntuacion from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getFloat(0);
-        }else res=-1;
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select puntuacion from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getFloat(0);
+        } else res = -1;
         return res;
     }
 
-    protected String getResponsableEvent(int id){
-        String res="";
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select responsable from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getString(0);
+    protected String getResponsableEvent(int id) {
+        String res = "";
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select responsable from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected String getFechaEvent(int id){
-        String res="";
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select fecha, ubicacion from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getString(0);
+    protected String getFechaEvent(int id) {
+        String res = "";
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select fecha, ubicacion from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getString(0);
         }
         return res;
     }
 
-    protected String getUbicacionEvent(int id){
-        String res="";
-        SQLiteDatabase bd=this.getWritableDatabase();
-        Cursor fila=bd.rawQuery("select ubicacion from events where id="+id,null);
-        if(fila.moveToFirst()){
-            res=fila.getString(0);
+    protected String getUbicacionEvent(int id) {
+        String res = "";
+        SQLiteDatabase bd = this.getWritableDatabase();
+        Cursor fila = bd.rawQuery("select ubicacion from events where id=" + id, null);
+        if (fila.moveToFirst()) {
+            res = fila.getString(0);
         }
         return res;
     }
