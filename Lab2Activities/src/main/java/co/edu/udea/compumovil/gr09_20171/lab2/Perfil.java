@@ -39,7 +39,7 @@ public class Perfil extends Fragment {
 
         try {
             textView_perfil_nombre.setText(getUsuario());
-            textView_perfil_email.setText(admin.getEmailUser("leo"));
+            textView_perfil_email.setText(admin.getEmailUser(getUsuario()));
             textView_perfil_edad.setText(admin.getEdadUser(getUsuario()));
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,13 +51,11 @@ public class Perfil extends Fragment {
     private String getUsuario () throws IOException {
         final String filename = "registro.txt";
         String usuario = "";
-        FileReader fileReader;
         BufferedReader lector;
-
-        fileReader = new FileReader(filename);
-        lector = new BufferedReader(fileReader);
+        lector = new BufferedReader(
+                new InputStreamReader(
+                        getActivity().openFileInput(filename)));
         usuario = lector.readLine();
-
         return usuario;
     }
 }
