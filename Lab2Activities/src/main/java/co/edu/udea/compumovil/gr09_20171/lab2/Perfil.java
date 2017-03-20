@@ -1,8 +1,5 @@
 package co.edu.udea.compumovil.gr09_20171.lab2;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +27,6 @@ public class Perfil extends Fragment {
                              Bundle savedInstanceState) {
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(getActivity(), "compumovil", null, 1);
-
 
         View view = inflater.inflate(R.layout.activity_perfil, container, false);
         TextView textView_perfil_nombre = (TextView) view.findViewById(R.id.textView_perfil_nombre);
