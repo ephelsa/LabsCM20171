@@ -16,11 +16,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
+    private final String filename="registro.txt";
     private Button login;
     private Button registrar;
     private EditText user;
     private EditText pass;
-    private final String filename="registro.txt";
     private FileOutputStream outputStream;
 
     @Override
