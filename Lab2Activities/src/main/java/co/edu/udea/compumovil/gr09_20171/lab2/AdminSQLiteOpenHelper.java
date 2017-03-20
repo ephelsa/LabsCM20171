@@ -107,7 +107,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    protected byte[] getFotoUser(String u) {
+    protected Bitmap getFotoUser(String u) {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select foto from users where user=\"" + u + "\"", null);
@@ -116,7 +116,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         } else {
             res = null;
         }
-        return res;
+        Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
+        return bitmap;
 
     }
 
