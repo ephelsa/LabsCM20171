@@ -183,8 +183,6 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         return false;
         }
         return true;
-
-
     }
 
     protected void setPassword(String u,String p) {
@@ -222,7 +220,4 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
         }
     }
-
-
-
 }
