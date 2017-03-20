@@ -5,8 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.icu.lang.UCharacter;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * Created by Julian on 10/03/2017.
@@ -35,11 +39,41 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 "responsable text," +
                 "fecha text," +
                 "ubicacion text)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    protected void CreateEvent(Bitmap f, String na, String des, float punt, String res, String dat, String ub) {
+        SQLiteDatabase bd = this.getWritableDatabase();
+        ContentValues registro = new ContentValues();
+        byte[] foto;
+        try {
+            foto = getBitmapAsByteArray(f);
+        } catch (Exception e) {
+            foto = null;
+        }
+        registro.put("photo", foto);
+        registro.put("name", na);
+        registro.put("descripcion", des);
+        registro.put("puntuacion", punt);
+        registro.put("responsable", res);
+        registro.put("fecha", dat);
+        registro.put("ubicacion", ub);
+        //se inserta el contenedor en la tabla
+        bd.insert("events", null, registro);
+        //se cierra el uso de la base de datos
+        bd.close();
+
+    }
+
+    private static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
     }
 
     protected String getEmailUser(String u) {
@@ -96,14 +130,15 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    protected byte[] getFotoEvent(int id) {
+    protected Bitmap getFotoEvent(int id) {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select photo from events where id=" + id, null);
         if (fila.moveToFirst()) {
             res = fila.getBlob(0);
         } else res = null;
-        return res;
+        Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
+        return bitmap;
     }
 
     protected String getNameEvent(int id) {
@@ -168,24 +203,25 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     protected boolean Ingresar(String user, String email, String pass) {
         //permisos de escritura en la bd
-        try{
-        SQLiteDatabase bd = this.getWritableDatabase();
-        //contenedor de valores para la bd
-        ContentValues registro = new ContentValues();
-        //se mandan los valores con su respectiva celda al contenedor
-        registro.put("user", user);
-        registro.put("email", email);
-        registro.put("password", pass);
-        //se inserta el contenedor en la tabla
-        bd.insert("users", null, registro);
-        //se cierra el uso de la base de datos
-        bd.close();}catch (Exception e){
-        return false;
+        try {
+            SQLiteDatabase bd = this.getWritableDatabase();
+            //contenedor de valores para la bd
+            ContentValues registro = new ContentValues();
+            //se mandan los valores con su respectiva celda al contenedor
+            registro.put("user", user);
+            registro.put("email", email);
+            registro.put("password", pass);
+            //se inserta el contenedor en la tabla
+            bd.insert("users", null, registro);
+            //se cierra el uso de la base de datos
+            bd.close();
+        } catch (Exception e) {
+            return false;
         }
         return true;
     }
 
-    protected void setPassword(String u,String p) {
+    protected void setPassword(String u, String p) {
         SQLiteDatabase bd = this.getWritableDatabase();
         try {
             bd.execSQL("UPDATE user SET password='" + p + "'WHERE user='" + u + "'");
@@ -194,30 +230,35 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         }
     }
 
-    protected void setEmail(String u,String em){
-        SQLiteDatabase bd=this.getWritableDatabase();
+    protected void setEmail(String u, String em) {
+        SQLiteDatabase bd = this.getWritableDatabase();
         try {
             bd.execSQL("UPDATE user SET email='" + em + "'WHERE user='" + u + "'");
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
 
-    protected void setEdad(String u,String ed){
-        SQLiteDatabase bd=this.getWritableDatabase();
+    protected void setEdad(String u, String ed) {
+        SQLiteDatabase bd = this.getWritableDatabase();
         try {
             bd.execSQL("UPDATE user SET edad='" + ed + "'WHERE user='" + u + "'");
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
 
-    protected void setFoto(String u,byte[] f){
-        SQLiteDatabase bd=this.getWritableDatabase();
+    protected void setFoto(String u, Bitmap f) {
+        SQLiteDatabase bd = this.getWritableDatabase();
+        byte[] foto;
         try {
-            bd.execSQL("UPDATE user SET edad=" + f + "WHERE user='" + u + "'");
-        }catch (Exception e){
+            foto = getBitmapAsByteArray(f);
+            bd.execSQL("UPDATE user SET edad=" + foto + "WHERE user='" + u + "'");
+        } catch (Exception e) {
 
         }
+
     }
+
+
 }
