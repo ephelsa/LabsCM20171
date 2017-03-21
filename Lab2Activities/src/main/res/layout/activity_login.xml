@@ -21,7 +21,7 @@
         android:id="@+id/edUserL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="5"
         android:hint="@string/txUserLogin"
         android:inputType="textPersonName" />
 
@@ -35,12 +35,12 @@
         android:id="@+id/edPassL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/txPasswordLogin"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/bttLogin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txIngLogin" />

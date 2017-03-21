@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/perfil_config">
+
+        <EditTextPreference
+            android:key="usuario_preference"
+            android:title="@string/Email"
+            android:summary="@string/email_summary"/>
+
+        <EditTextPreference
+            android:key="edad_preference"
+            android:title="@string/edad"
+            android:summary="@string/edad_summary"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

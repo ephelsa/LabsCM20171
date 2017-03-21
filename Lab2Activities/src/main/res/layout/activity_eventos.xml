@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="co.edu.udea.compumovil.gr09_20171.lab2.Eventos">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 </android.support.constraint.ConstraintLayout>

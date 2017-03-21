@@ -35,6 +35,10 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="perfil_config">Datos del usuario</string>
+    <string name="email_summary">Editar correo electrónico.</string>
+    <string name="edad">Edad</string>
+    <string name="edad_summary">Mdificar edad.</string>
 
 
 </resources>
