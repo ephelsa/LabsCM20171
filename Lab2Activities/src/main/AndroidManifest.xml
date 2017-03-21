@@ -42,9 +42,8 @@
         <activity android:name=".Eventos" />
         <activity android:name=".Configuraciones" />
         <activity android:name=".About" />
-
-
-        <activity android:name=".EventV">
+        <activity android:name=".EventV"></activity>
+        <activity android:name=".MapsEjm">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
