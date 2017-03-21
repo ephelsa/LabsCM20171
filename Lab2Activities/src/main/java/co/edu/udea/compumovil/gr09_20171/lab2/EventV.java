@@ -46,6 +46,7 @@ public class EventV extends AppCompatActivity implements View.OnClickListener {
                 Uri selectedImage = data.getData();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, false);
                     admin.CreateEvent(bitmap,"","",0,"","","");
                     img.setImageBitmap(bitmap);
 

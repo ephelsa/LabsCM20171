@@ -125,6 +125,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         //se inserta el contenedor en la tabla
         bd.insert("users", null, registro);
         //se cierra el uso de la base de datos
+
         bd.close();
         Toast.makeText(this, R.string.OkUserR,
                 Toast.LENGTH_SHORT).show();
