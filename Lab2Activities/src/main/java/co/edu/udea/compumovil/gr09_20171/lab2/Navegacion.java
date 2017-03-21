@@ -33,7 +33,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
     private String username;
     private FileOutputStream outputStream;
 
-    private Fragment perfil;
+    private Fragment perfil, about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +137,9 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         } else if (id == R.id.nav_about) {
             setTitle(R.string.nav_about);
+            about = new About();
+
+            fragmentManager.beginTransaction().replace(R.id.fragment_content, about).commit();
 
         } else if (id == R.id.nav_logout) {
             //setTitle(R.string.nav_logout);

@@ -39,7 +39,10 @@
     <string name="email_summary">Editar correo electrónico.</string>
     <string name="edad">Edad</string>
     <string name="edad_summary">Mdificar edad.</string>
-
+    <string name="materia_titulo">Materia</string>
+    <string name="materia_content">La materia es chévere</string>
+    <string name="curso_titulo">Curso</string>
+    <string name="curso_content">Laboratorios como proyectos finales, qué gonorrea.</string>
 
 </resources>
 
