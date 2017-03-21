@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">LabsCM20171</string>
+
+    <!-- Títulos de activities -->
+    <string name="title_personalInfo">Información Personal</string>
+    <string name="title_contactInfo">Información de Contacto</string>
+    <string name="title_otherInfo">Información Complementaria</string>
+
+    <!-- Nombres PersonalInfo -->
+    <string name="TF_Name">Nombres</string>
+    <string name="TF_LName">Apellidos</string>
+    <string name="RB_GMale">Hombre</string>
+    <string name="RB_GFemale">Mujer</string>
+    <string name="LabelGender" translatable="false">Sexo</string>
+    <string name="txt_Date">Fecha de nacimiento </string>
+
+    <!-- Datos del Spinner -->
+    <string name="Grado">Escolaridad</string>
+    <string name="Primaria">Primaria</string>
+    <string name="Secundaria">Secundaria</string>
+    <string name="Universitaria">Universitaria</string>
+    <string name="Otro">Otro</string>
+
+    <!-- Nombres del ContactInfo -->
+    <string name="txt_telefono">Teléfono</string>
+    <string name="txt_direccion">Dirección</string>
+    <string name="txt_email">Correo electrónico</string>
+    <string name="txt_acountry">País</string>
+    <string name="txt_ccity">Ciudad</string>
+
+    <!-- Nombres OtherInfo -->
+    <string name="textView_pasatiempos">Pasatiempos</string>
+    <string name="leer">Leer</string>
+    <string name="verTv">Ver Tv</string>
+    <string name="bailar">Bailar</string>
+    <string name="cantar">Cantar</string>
+    <string name="nadar">Nadar</string>
+    <string name="valor"> estrellas </string>
+
+    <!-- Botones -->
+    <string name="btn_Next">Siguiente</string>
+    <string name="btn_mostrar">Mostrar</string>
+
+    <!-- Mensajes -->
+    <string name="resumen">Resumen de Información \n</string>
+    <string name="void_nombres">Nombres vacíos</string>
+    <string name="void_apellidos">Apellidos vacíos</string>
+    <string name="void_gender">Género vacío</string>
+    <string name="void_fecha">Sin fecha</string>
+    <string name="void_estudios">Sin estudios</string>
+    <string name="void_telefono">Teléfono vacío</string>
+    <string name="void_email">Correo vacío</string>
+    <string name="void_pais">País vacío</string>
+    <string name="void_ciudad">Ciudad vacía</string>
+    <string name="void_dirección">Dirección vacía</string>
+
+    <!-- Ciudades de Colombia -->
+    <string name="Bogotá" translatable="false">Bogotá</string>
+    <string name="Medellín" translatable="false">Medellín</string>
+    <string name="Cali" translatable="false">Cali</string>
+    <string name="Barranquilla" translatable="false">Barranquilla</string>
+    <string name="Cartagena">Cartagena de Indias</string>
+    <string name="Soledad" translatable="false">Soledad</string>
+    <string name="Cucuta" translatable="false">Cúcuta</string>
+    <string name="Ibague" translatable="false">Ibagué</string>
+    <string name="Soacha" translatable="false">Soacha</string>
+    <string name="Bucaramanga" translatable="false">Bucaramanga</string>
+    <string name="santa_marta" translatable="false">Santa Marta</string>
+    <string name="Villavicencio" translatable="false">Villavicencio</string>
+    <string name="Bello">Bello</string>
+    <string name="Valledupar" translatable="false">Valledupar</string>
+    <string name="Pereira" translatable="false">Pereira</string>
+    <string name="Buenaventura" translatable="false">Buenaventura</string>
+    <string name="Pasto" translatable="false">Pasto</string>
+    <string name="Manizales" translatable="false">Manizales</string>
+    <string name="Monteria" translatable="false">Montería</string>
+    <string name="Neiva" translatable="false">Neiva</string>
+
+    <!-- Paises de latinoamérica -->
+    <string name="Argentina">Argentina</string>
+    <string name="Bolivia">Bolivia</string>
+    <string name="Brasil">Brasil</string>
+    <string name="Chile" translatable="false">Chile</string>
+    <string name="Colombia">Colombia</string>
+    <string name="CostaRica" translatable="false">Costa Rica</string>
+    <string name="Cuba" translatable="false">Cuba</string>
+    <string name="Ecuador">Ecuador</string>
+    <string name="Salvador">El Salvador</string>
+    <string name="Guatemala" translatable="false">Guatemala</string>
+    <string name="Haiti">Haití</string>
+    <string name="Honduras" translatable="false">Honduras</string>
+    <string name="Mexico" translatable="false">México</string>
+    <string name="Nicaragua">Nicaragua</string>
+    <string name="Panama" translatable="false">Panamá</string>
+    <string name="Paraguay">Paraguay</string>
+    <string name="Peru">Perú</string>
+    <string name="Dominicana" translatable="false">República Dominicana</string>
+    <string name="Uruguay">Uruguay</string>
+    <string name="Venezuela" translatable="false">Venezuela</string>
+
+</resources>

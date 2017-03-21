@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_personal_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="co.edu.udea.compumovil.gr09_20171.lab1.PersonalInfo">
+
+    <!-- Inicio -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/TF_Name"
+        android:hint="@string/TF_Name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:inputType="textCapWords|textNoSuggestions|text"
+        android:imeOptions="actionNext" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/TF_LName"
+        android:hint="@string/TF_LName"
+        android:layout_below="@id/TF_Name"
+        android:layout_alignParentLeft="true"
+        android:inputType="textCapWords|textNoSuggestions|text"
+        android:imeOptions="actionDone"/>
+
+    <TextView
+        android:text="@string/LabelGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxGender"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_supervisor_account_black_24dp"
+        android:paddingTop="5dp"
+        android:layout_below="@id/TF_LName"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:paddingLeft="70dp"
+        android:layout_below="@id/TF_LName">
+
+        <RadioButton
+            android:text="@string/RB_GFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RB_GFemale" />
+        <RadioButton
+            android:text="@string/RB_GMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RB_GMale" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tx_Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/TxGender"
+        android:text="@string/txt_Date"
+        android:paddingTop="15dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tx_Data"
+        android:layout_alignBaseline="@id/tx_Data"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/bt_Data"
+        android:text="Cambiar"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SpEstudio"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tx_Data"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_ContactInfo"
+        android:text="@string/btn_Next"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
