@@ -112,13 +112,17 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select foto from users where user=\"" + u + "\"", null);
-        if (fila.moveToFirst()) {
-            res = fila.getBlob(0);
-        } else {
-            res = null;
+        try {
+            if (fila.moveToFirst()) {
+                res = fila.getBlob(0);
+            } else res = null;
+
+            Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
+            return bitmap;
+        }catch (Exception e){
+
         }
-        Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
-        return bitmap;
+        return null;
 
     }
 
