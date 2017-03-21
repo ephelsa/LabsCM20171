@@ -56,6 +56,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             foto = null;
         }
+
         registro.put("photo", foto);
         registro.put("name", na);
         registro.put("descripcion", des);
@@ -135,11 +136,17 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
         Cursor fila = bd.rawQuery("select photo from events where id=" + id, null);
+        try {
         if (fila.moveToFirst()) {
             res = fila.getBlob(0);
         } else res = null;
-        Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
-        return bitmap;
+
+            Bitmap bitmap = BitmapFactory.decodeByteArray(res, 0, res.length);
+            return bitmap;
+        }catch (Exception e){
+
+        }
+        return null;
     }
 
     protected String getNameEvent(int id) {
