@@ -52,4 +52,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/Button_perfil_actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_perfil_edad"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp" />
 </RelativeLayout>

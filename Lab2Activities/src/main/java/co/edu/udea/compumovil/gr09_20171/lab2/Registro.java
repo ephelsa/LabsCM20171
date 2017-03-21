@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.R.attr.data;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
     private Button btnReg;
@@ -119,9 +124,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         //contenedor de valores para la bd
         ContentValues registro = new ContentValues();
         //se mandan los valores con su respectiva celda al contenedor
+
+        byte[] nul={12,5};
         registro.put("user", user);
         registro.put("email", email);
         registro.put("password", pass);
+        registro.put("photo",nul);
+        registro.put("edad","null");
         //se inserta el contenedor en la tabla
         bd.insert("users", null, registro);
         //se cierra el uso de la base de datos

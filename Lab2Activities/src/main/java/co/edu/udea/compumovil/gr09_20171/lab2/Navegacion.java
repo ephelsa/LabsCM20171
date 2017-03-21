@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
     private final String filename = "registro.txt";
     private String username;
     private FileOutputStream outputStream;
-
+    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
     private Fragment perfil, about;
 
     @Override
@@ -72,12 +74,17 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         //Editar el Head del Navigation Drawer
         View header = navigationView.getHeaderView(0);
+        ImageView nav_image;
         TextView nav_header_user;
         TextView nav_header_email;
+
+        nav_image = (ImageView) header.findViewById(R.id.imageView);
         nav_header_user = (TextView) header.findViewById(R.id.navigation_header_container_user);
         nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
+
+        nav_image.setImageBitmap(admin.getFotoUser(username));
         nav_header_user.setText(username);
-        nav_header_email.setText(getBdCorreo());
+        nav_header_email.setText(admin.getEmailUser(username));
 
     }
 
@@ -160,18 +167,5 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private String getBdCorreo() {
-        String correo = "";
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select email from users where user=\"" + username + "\"", null);
-
-        if (fila.moveToFirst()) {
-            correo = fila.getString(0);
-        }
-
-        return correo;
     }
 }

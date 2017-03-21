@@ -84,6 +84,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Cursor fila = bd.rawQuery("select password from users where user=\"" + u + "\"", null);
         if (fila.moveToFirst()) {
             if (fila.getString(0).equals(p)) {
+
                 Toast.makeText(this, getString(R.string.LoginOk) + u,
                         Toast.LENGTH_SHORT).show();
                 return true;

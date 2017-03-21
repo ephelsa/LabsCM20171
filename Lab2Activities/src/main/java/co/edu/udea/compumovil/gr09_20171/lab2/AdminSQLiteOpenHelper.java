@@ -111,8 +111,10 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     protected Bitmap getFotoUser(String u) {
         byte[] res;
         SQLiteDatabase bd = this.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select foto from users where user=\"" + u + "\"", null);
-        try {
+        Cursor fila = bd.rawQuery("select photo from users where user=\"" + u + "\"", null);
+        try{
+
+
             if (fila.moveToFirst()) {
                 res = fila.getBlob(0);
             } else res = null;
@@ -236,7 +238,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     protected void setPassword(String u, String p) {
         SQLiteDatabase bd = this.getWritableDatabase();
         try {
-            bd.execSQL("UPDATE user SET password='" + p + "'WHERE user='" + u + "'");
+            bd.execSQL("UPDATE users SET password='" + p + "' WHERE user='" + u + "'");
         } catch (Exception e) {
 
         }
@@ -245,7 +247,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     protected void setEmail(String u, String em) {
         SQLiteDatabase bd = this.getWritableDatabase();
         try {
-            bd.execSQL("UPDATE user SET email='" + em + "'WHERE user='" + u + "'");
+            bd.execSQL("UPDATE users SET email='" + em + "' WHERE user='" + u + "'");
         } catch (Exception e) {
 
         }
@@ -254,7 +256,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     protected void setEdad(String u, String ed) {
         SQLiteDatabase bd = this.getWritableDatabase();
         try {
-            bd.execSQL("UPDATE user SET edad='" + ed + "'WHERE user='" + u + "'");
+            bd.execSQL("UPDATE users SET edad='" + ed + "' WHERE user='" + u+"'");
         } catch (Exception e) {
 
         }
@@ -265,9 +267,25 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         byte[] foto;
         try {
             foto = getBitmapAsByteArray(f);
-            bd.execSQL("UPDATE user SET edad=" + foto + "WHERE user='" + u + "'");
+            ContentValues valores = new ContentValues();
+            valores.put("photo",foto);
+
+//Actualizamos el registro en la base de datos
+            bd.update("users", valores, "user='"+u+"'", null);
         } catch (Exception e) {
 
+        }
+
+    }
+
+    protected  void setUsername(String user,String newUser){
+        if(!user.equals(newUser)) {
+            SQLiteDatabase bd = this.getWritableDatabase();
+            try {
+                bd.execSQL("UPDATE users SET user='" + newUser + "' WHERE user=\"" + user + "\"");
+            } catch (Exception e) {
+
+            }
         }
 
     }
