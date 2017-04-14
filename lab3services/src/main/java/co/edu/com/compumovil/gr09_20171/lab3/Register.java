@@ -23,7 +23,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private final String url = "http://192.168.1.7:3000/api";
     private EditText username, email, password, passwordC;
     private Button register;
-boolean exist;
+    boolean exist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +42,20 @@ boolean exist;
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.registerBtnReg:
-existUser();
+                existUser();
                 break;
         }
     }
 
     private void existUser() {
-        String u,e,p,p2;
-        u=username.getText().toString().toUpperCase();
-        e=email.getText().toString();
-        p=password.getText().toString();
-        p2=passwordC.getText().toString();
-        if(p.equals(p2)) {
+        String u, e, p, p2;
+        u = username.getText().toString().toUpperCase();
+        e = email.getText().toString();
+        p = password.getText().toString();
+        p2 = passwordC.getText().toString();
+        if (p.equals(p2)) {
             //making object of RestAdapter
             RestAdapter adapter = new RestAdapter.Builder().setEndpoint(url).build();
 
@@ -67,7 +68,7 @@ existUser();
                     Toast.makeText(getApplicationContext(), res, Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent().setClass(
                             Register.this, Login.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(mainIntent);
 
                     finish();
@@ -80,8 +81,8 @@ existUser();
 
                 }
             });
-        }
-        else Toast.makeText(getApplicationContext(),"Claves distintas",Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(getApplicationContext(), "Claves distintas", Toast.LENGTH_SHORT).show();
     }
 
 
