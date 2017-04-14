@@ -4,45 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.com.compumovil.gr09_20171.lab3.Login"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="co.edu.com.compumovil.gr09_20171.lab3.Actualizar_Perfil">
 
-    <TextView
-        android:id="@+id/loginTxUser"
+    <ImageView
+        android:id="@+id/Act_perfil_foto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username" />
-
-    <EditText
-        android:id="@+id/loginEdtUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="5"
-        android:hint="Username"
-        android:inputType="textNoSuggestions" />
-
-    <TextView
-        android:id="@+id/loginTxPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password" />
+        app:srcCompat="@drawable/splash_screen" />
 
     <EditText
-        android:id="@+id/loginEdtPass"
+        android:id="@+id/Act_perfil_User"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=""
-        android:inputType="textPassword" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nombre_Usuario" />
+
+    <EditText
+        android:id="@+id/Act_perfil_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="COrreo" />
+
+    <EditText
+        android:id="@+id/Act_perfil_edad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:text="edad" />
 
     <Button
-        android:id="@+id/loginBtnLogin"
+        android:id="@+id/Act_perfil_act"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign in" />
+        android:text="Actualizar" />
 
     <Button
-        android:id="@+id/loginBtnReg"
+        android:id="@+id/Act_perfil_cancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sing up" />
+        android:text="Button" />
+
 </LinearLayout>

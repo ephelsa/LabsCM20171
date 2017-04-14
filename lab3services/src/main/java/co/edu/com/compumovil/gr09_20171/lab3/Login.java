@@ -52,7 +52,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.loginBtnReg:
-
+                Intent intent = new Intent().setClass(Login.this, Register.class);
+                startActivity(intent);
                 break;
         }
 

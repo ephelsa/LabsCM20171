@@ -1,9 +1,51 @@
 <resources>
     <string name="app_name">Lab3Services</string>
-    <string name="title_activity_navegacion">Navegacion</string>
 
+    <string name="username">UserName</string>
+
+
+
+
+    <!--Actividad de login-->
+    <string name="txPasswordLogin">Contraseña</string>
+    <string name="txUserLogin">Usuario</string>
+    <string name="txIngLogin">Ingresar</string>
+    <!-- Actividad Registro -->
+    <string name="Email">Correo</string>
+    <string name="PasswordC">Confirmar contraseña</string>
+    <string name="txIngReg">Registrar</string>
+    <string name="cancelar">Cancelar</string>
+
+
+    <!-- Errores y confirmaciones  -->
+    <string name="ErrorUsuario">El usuario no puede ser vacio</string>
+    <string name="ErrorCorreo">El correo no puede ser vacio</string>
+    <string name="ErrorPass">La contraseña no puede ser vacio</string>
+    <string name="ErrorPass2">Las contraseñas no son iguales</string>
+    <string name="OkUserR">Registro exitoso</string>
+    <string name="ErrorUserRep">El nombre de usuario ya esta en uso</string>
+    <string name="ErrorCorreoR">EL correo ya esta en uso</string>
+    <string name="LoginOk">"Bienvenido "</string>
+    <string name="ErrorLogin">Usuario o contraseña incorrecto</string>
+
+    <!-- Navigation Drawer -->
+    <string name="nav_perfil">Perfil</string>
+    <string name="nav_eventos">Eventos</string>
+    <string name="nav_configuraciones">Configuraciones</string>
+    <string name="nav_about">Acerca de</string>
+    <string name="nav_logout">Cerrar sesión</string>
+    <string name="title_activity_navegacion">Navegacion</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="perfil_config">Datos del usuario</string>
+    <string name="email_summary">Editar correo electrónico.</string>
+    <string name="edad">Edad</string>
+    <string name="edad_summary">Mdificar edad.</string>
+    <string name="materia_titulo">Materia</string>
+    <string name="materia_content">La materia es chévere</string>
+    <string name="curso_titulo">Curso</string>
+    <string name="curso_content">Laboratorios como proyectos finales, qué gonorrea.</string>
 </resources>

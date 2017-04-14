@@ -28,6 +28,7 @@ public class InfoUsuario implements Serializable {
     private String email;
     private String age;
     private String photo;
+    private boolean exist;
     private FileOutputStream outputStream;
     SharedPreferences sf;
     private final String preference = "pref";
@@ -74,6 +75,14 @@ public class InfoUsuario implements Serializable {
         this.photo = photo;
     }
 
+    public boolean isExist() {
+        return exist;
+    }
+
+    public void setExist(boolean exist) {
+        this.exist = exist;
+    }
+
     public void getToDB(final String u) {
         //making object of RestAdapter
         RestAdapter adapter = new RestAdapter.Builder().setEndpoint(url).build();
@@ -83,16 +92,18 @@ public class InfoUsuario implements Serializable {
         restInterface.dataUser(u, new Callback<Usuario>() {
             @Override
             public void success(Usuario usuario, Response response) {
+                exist=true;
                 username = usuario.getUsername();
                 password = usuario.getPass();
                 email = usuario.getEmail();
                 age = usuario.getAge();
                 photo = usuario.getPhoto();
+
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+exist=false;
             }
         });
     }
