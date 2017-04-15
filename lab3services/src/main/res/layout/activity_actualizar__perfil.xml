@@ -38,15 +38,9 @@
         android:text="edad" />
 
     <Button
-        android:id="@+id/Act_perfil_act"
+        android:id="@+id/Act_perfil_actu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Actualizar" />
-
-    <Button
-        android:id="@+id/Act_perfil_cancelar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 
 </LinearLayout>

@@ -21,13 +21,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users" +
-                "(user text primary key not null," +
-                "email text not null," +
-                "password text not null," +
-                "photo BLOB," +
-                "edad text" +
-                ")");
+
         db.execSQL("create table events" +
                 "(id INTEGER primary key autoincrement," +
                 "photo BLOB," +
@@ -75,36 +69,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         return outputStream.toByteArray();
     }
 
-    protected String getEmailUser(String u) {
-        String res = "";
-        SQLiteDatabase bd = this.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select email from users where user=\"" + u + "\"", null);
-        if (fila.moveToFirst()) {
-            res = fila.getString(0);
-        }
-        return res;
-    }
 
-    protected String getEmailUser2(String e) {
-        String res = "";
-        SQLiteDatabase bd = this.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select email from users where user=\"" + e + "\"", null);
-        if (fila.moveToFirst()) {
-            res = fila.getString(0);
-        }
-        return res;
-    }
-
-
-    protected String getEdadUser(String u) {
-        String res = "";
-        SQLiteDatabase bd = this.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select edad from users where user=\"" + u + "\"", null);
-        if (fila.moveToFirst()) {
-            res = fila.getString(0);
-        }
-        return res;
-    }
 
     protected Bitmap getFotoUser(String u) {
         byte[] res;
@@ -126,15 +91,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
-    protected String getPassUser(String u) {
-        String res = "";
-        SQLiteDatabase bd = this.getWritableDatabase();
-        Cursor fila = bd.rawQuery("select password from users where user=\"" + u + "\"", null);
-        if (fila.moveToFirst()) {
-            res = fila.getString(0);
-        }
-        return res;
-    }
+
 
     protected Bitmap getFotoEvent(int id) {
         byte[] res;

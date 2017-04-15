@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             Intent intent = new Intent(Login.this,Navegacion.class);
                             intent.putExtra("datos", perfil);
                             startActivity(intent);
+                            finish();
                         }
 
                     }

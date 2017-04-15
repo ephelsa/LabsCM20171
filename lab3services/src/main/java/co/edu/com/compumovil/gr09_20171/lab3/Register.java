@@ -1,17 +1,12 @@
 package co.edu.com.compumovil.gr09_20171.lab3;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import co.edu.com.compumovil.gr09_20171.lab3.POJO.Usuario;
 import retrofit.Callback;
@@ -43,15 +38,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.registerBtnReg:
-                existUser();
+                registerUser();
                 break;
         }
     }
 
-    private void existUser() {
+    private void registerUser() {
         String u, e, p, p2;
         u = username.getText().toString().toUpperCase();
-        e = email.getText().toString();
+        e = email.getText().toString().toUpperCase();
         p = password.getText().toString();
         p2 = passwordC.getText().toString();
         if (p.equals(p2)) {
@@ -60,7 +55,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             //Creating Rest Services
             RestInterface restInterface = adapter.create(RestInterface.class);
-            restInterface.newUser(u, p, e, " ", u + "img.png", new Callback<Usuario>() {
+            restInterface.newUser(u,u, p, e, " ", u + "img.png", new Callback<Usuario>() {
                 @Override
                 public void success(Usuario usuario, Response response) {
                     String res = response.getReason();

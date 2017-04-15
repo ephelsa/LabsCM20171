@@ -9,6 +9,9 @@ public class Usuario {
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("pass")
     @Expose
     private String pass;
@@ -21,9 +24,6 @@ public class Usuario {
     @SerializedName("photo")
     @Expose
     private String photo;
-    @SerializedName("id")
-    @Expose
-    private Integer id;
 
     public String getUsername() {
         return username;
@@ -31,6 +31,14 @@ public class Usuario {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPass() {
@@ -63,14 +71,6 @@ public class Usuario {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
 }

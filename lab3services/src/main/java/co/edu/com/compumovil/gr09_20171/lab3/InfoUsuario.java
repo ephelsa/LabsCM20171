@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.FileOutputStream;
@@ -24,6 +25,7 @@ public class InfoUsuario implements Serializable {
 
     private final String url = "http://192.168.1.7:3000/api";
     private String username;
+    private String name;
     private String password;
     private String email;
     private String age;
@@ -34,6 +36,9 @@ public class InfoUsuario implements Serializable {
     private final String preference = "pref";
     private final String keysave = "ultimoU";
 
+    public String getUrl(){
+        return url;
+    }
 
     public String getUsername() {
         return username;
@@ -41,6 +46,14 @@ public class InfoUsuario implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -94,6 +107,7 @@ public class InfoUsuario implements Serializable {
             public void success(Usuario usuario, Response response) {
                 exist=true;
                 username = usuario.getUsername();
+                name=usuario.getName();
                 password = usuario.getPass();
                 email = usuario.getEmail();
                 age = usuario.getAge();
