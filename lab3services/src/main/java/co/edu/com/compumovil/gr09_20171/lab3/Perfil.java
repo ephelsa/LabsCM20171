@@ -1,7 +1,5 @@
 package co.edu.com.compumovil.gr09_20171.lab3;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,14 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import co.edu.com.compumovil.gr09_20171.lab3.Otros.InfoUsuario;
 
 
 public class Perfil extends Fragment implements View.OnClickListener {
     private InfoUsuario infoUsuario;
-private Fragment perfil;
+    private Fragment perfil;
+
     public Perfil() {
         //Vacío
     }
@@ -59,16 +56,14 @@ private Fragment perfil;
                 /*Intent mainIntent = new Intent().setClass(
                         getActivity(), Actualizar_Perfil.class);
                 startActivity(mainIntent);*/
-                perfil=new Actualizar_Perfil();
-                Bundle args=new Bundle();
-                args.putSerializable("dat",infoUsuario);
+                perfil = new Actualizar_Perfil();
+                Bundle args = new Bundle();
+                args.putSerializable("dat", infoUsuario);
                 perfil.setArguments(args);
                 fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
                 break;
         }
     }
 
-    public void loadbd2(String u){
 
-    }
 }

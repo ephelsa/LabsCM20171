@@ -1,4 +1,3 @@
-
 package co.edu.com.compumovil.gr09_20171.lab3.POJO;
 
 import com.google.gson.annotations.Expose;
@@ -24,6 +23,32 @@ public class Usuario {
     @SerializedName("photo")
     @Expose
     private String photo;
+
+    /**
+     * No args constructor for use in serialization
+     *
+     */
+    public Usuario() {
+    }
+
+    /**
+     *
+     * @param username
+     * @param email
+     * @param age
+     * @param name
+     * @param photo
+     * @param pass
+     */
+    public Usuario(String username, String name, String pass, String email, String age, String photo) {
+        super();
+        this.username = username;
+        this.name = name;
+        this.pass = pass;
+        this.email = email;
+        this.age = age;
+        this.photo = photo;
+    }
 
     public String getUsername() {
         return username;

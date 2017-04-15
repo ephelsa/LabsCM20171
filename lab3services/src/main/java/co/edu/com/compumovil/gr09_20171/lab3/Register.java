@@ -8,14 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import co.edu.com.compumovil.gr09_20171.lab3.Otros.InfoUsuario;
+import co.edu.com.compumovil.gr09_20171.lab3.POJO.RestInterface;
 import co.edu.com.compumovil.gr09_20171.lab3.POJO.Usuario;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    private final String url = "http://192.168.1.7:3000/api";
+
     private EditText username, email, password, passwordC;
     private Button register;
     boolean exist;
@@ -44,37 +48,41 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser() {
+        InfoUsuario infoUsuario=new InfoUsuario();
         String u, e, p, p2;
         u = username.getText().toString().toUpperCase();
         e = email.getText().toString().toUpperCase();
         p = password.getText().toString();
         p2 = passwordC.getText().toString();
         if (p.equals(p2)) {
-            //making object of RestAdapter
-            RestAdapter adapter = new RestAdapter.Builder().setEndpoint(url).build();
+            boolean res = false;
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(infoUsuario.getUrl())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-            //Creating Rest Services
-            RestInterface restInterface = adapter.create(RestInterface.class);
-            restInterface.newUser(u,u, p, e, " ", u + "img.png", new Callback<Usuario>() {
-                @Override
-                public void success(Usuario usuario, Response response) {
-                    String res = response.getReason();
-                    Toast.makeText(getApplicationContext(), res, Toast.LENGTH_LONG).show();
+
+            RestInterface restInterface = retrofit.create(RestInterface.class);
+            Call<Usuario> call = restInterface.newUser(u,u,p,e," ",u+"img.png");
+            try {
+
+                Usuario data = call.execute().body();
+                if(infoUsuario.getBDdata(u)){
+                    Toast.makeText(getApplicationContext(),"OK",Toast.LENGTH_SHORT).show();
                     Intent mainIntent = new Intent().setClass(
                             Register.this, Login.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(mainIntent);
 
                     finish();
+                }else {
+                    Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
                 }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Toast.makeText(getApplicationContext(),ex.getMessage(),Toast.LENGTH_SHORT).show();
+            }
 
-                @Override
-                public void failure(RetrofitError error) {
-                    String megError = error.getMessage();
-                    Toast.makeText(getApplicationContext(), megError, Toast.LENGTH_LONG).show();
-
-                }
-            });
         } else
             Toast.makeText(getApplicationContext(), "Claves distintas", Toast.LENGTH_SHORT).show();
     }

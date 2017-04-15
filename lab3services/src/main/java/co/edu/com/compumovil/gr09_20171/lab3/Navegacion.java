@@ -1,6 +1,5 @@
 package co.edu.com.compumovil.gr09_20171.lab3;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,16 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
+import co.edu.com.compumovil.gr09_20171.lab3.Otros.AdminSQLiteOpenHelper;
+import co.edu.com.compumovil.gr09_20171.lab3.Otros.InfoUsuario;
 
 public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,7 +25,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
     InfoUsuario infoUsuario;
     //private FileOutputStream outputStream;
     AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
-    private Fragment perfil, about;
+    private Fragment perfil, about,event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +39,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
             Log.e("Ficheros", "Error al leer fichero desde memoria interna");
         }*/
         setContentView(R.layout.activity_navegacion);
-        infoUsuario=(InfoUsuario)getIntent().getExtras().getSerializable("datos");
+        infoUsuario = (InfoUsuario) getIntent().getExtras().getSerializable("datos");
         setTitle(R.string.title_activity_navegacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,14 +68,16 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         ImageView nav_image;
         TextView nav_header_user;
         TextView nav_header_email;
+        TextView nav_header_name;
 
         nav_image = (ImageView) header.findViewById(R.id.imageView);
         nav_header_user = (TextView) header.findViewById(R.id.navigation_header_container_user);
         nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
-
+        nav_header_name = (TextView) header.findViewById(R.id.navigation_header_container_name);
         //nav_image.setImageBitmap(admin.getFotoUser(username));
         nav_header_user.setText(infoUsuario.getUsername());
         nav_header_email.setText(infoUsuario.getEmail());
+        nav_header_name.setText(infoUsuario.getName());
 
     }
 
@@ -126,14 +125,16 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         if (id == R.id.nav_perfil) {
             setTitle(R.string.nav_perfil);
             perfil = new Perfil();
-            Bundle args=new Bundle();
-            args.putSerializable("dat",infoUsuario);
+            Bundle args = new Bundle();
+            args.putSerializable("dat", infoUsuario);
             perfil.setArguments(args);
             fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
 
 
         } else if (id == R.id.nav_eventos) {
             setTitle(R.string.nav_eventos);
+            //event=new Eventos();
+            //fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
 
         } else if (id == R.id.nav_configuraciones) {
             setTitle(R.string.nav_configuraciones);

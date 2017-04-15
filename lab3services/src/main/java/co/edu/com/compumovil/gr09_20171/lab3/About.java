@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class About extends Fragment {
 
-    public About () {
+    public About() {
         // Vacío
     }
 

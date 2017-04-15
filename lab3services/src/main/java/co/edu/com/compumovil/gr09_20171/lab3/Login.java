@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import co.edu.com.compumovil.gr09_20171.lab3.Otros.InfoUsuario;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private static final long DELAY = 5000;
@@ -34,21 +33,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginBtnLogin:
-                TimerTask task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        if(password.getText().toString().equals(perfil.getPassword())){
-                            Intent intent = new Intent(Login.this,Navegacion.class);
-                            intent.putExtra("datos", perfil);
-                            startActivity(intent);
-                            finish();
-                        }
-
+                if(perfil.getBDdata(username.getText().toString().toUpperCase())) {
+                    if (password.getText().toString().equals(perfil.getPassword())) {
+                        Intent intent = new Intent(Login.this, Navegacion.class);
+                        intent.putExtra("datos", perfil);
+                        startActivity(intent);
+                        finish();
                     }
-                };
-                perfil.getToDB(username.getText().toString().toUpperCase());
-                Timer timer = new Timer();
-                timer.schedule(task, DELAY);
+                }
 
                 break;
 
