@@ -23,7 +23,7 @@ public class Actualizar_Perfil extends Fragment implements View.OnClickListener 
     private InfoUsuario infoUsuario;
     private EditText username, email, age;
     private Fragment perfil;
-    FragmentManager fragmentManager = getFragmentManager();
+
 
     public Actualizar_Perfil() {
     }
@@ -51,7 +51,7 @@ public class Actualizar_Perfil extends Fragment implements View.OnClickListener 
     }
 
 
-    private void updateU() {
+    private boolean updateU() {
         final String u = username.getText().toString().toUpperCase();
         final String e = email.getText().toString().toUpperCase();
         final String a = age.getText().toString().toUpperCase();
@@ -71,24 +71,31 @@ public class Actualizar_Perfil extends Fragment implements View.OnClickListener 
 
             Usuario data = call.execute().body();
             infoUsuario.getBDdata(infoUsuario.getUsername());
-            if(infoUsuario.getEmail().equals(e)||infoUsuario.getName().equals(u)||infoUsuario.getAge().equals(a)) {
-                Toast.makeText(getContext().getApplicationContext(), "Updated ok ", Toast.LENGTH_SHORT).show();
-                perfil=new Perfil();
-                Bundle args=new Bundle();
-                args.putSerializable("dat",infoUsuario);
-                perfil.setArguments(args);
-                fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
-            }else{
-                Toast.makeText(getContext().getApplicationContext(),"Update error",Toast.LENGTH_SHORT).show();
-            }
+
         } catch (IOException e1) {
             e1.printStackTrace();
+            res=false;
         }
+        if(infoUsuario.getEmail().equals(e)||infoUsuario.getName().equals(u)||infoUsuario.getAge().equals(a)) {
+            res=true;}else{
+            Toast.makeText(getContext().getApplicationContext(),"Update error",Toast.LENGTH_SHORT).show();
+            res=false;
+        }
+        return res;
     }
 
 
         @Override
         public void onClick (View v){
-updateU();
+            FragmentManager fragmentManager = getFragmentManager();
+            if(updateU()) {
+
+                Toast.makeText(getContext().getApplicationContext(), "Updated ok ", Toast.LENGTH_SHORT).show();
+                perfil = new Perfil();
+                Bundle args = new Bundle();
+                args.putSerializable("dat", infoUsuario);
+                perfil.setArguments(args);
+                fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
+            }
         }
     }
