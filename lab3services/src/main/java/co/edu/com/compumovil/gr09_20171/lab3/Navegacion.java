@@ -133,8 +133,8 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
 
         } else if (id == R.id.nav_eventos) {
             setTitle(R.string.nav_eventos);
-            //event=new Eventos();
-            //fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
+            event=new Principal();
+            fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
 
         } else if (id == R.id.nav_configuraciones) {
             setTitle(R.string.nav_configuraciones);

@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @SuppressWarnings("serial")
 public class InfoUsuario implements Serializable {
-    final String url = "http://192.168.1.7:3000/api/";
+    final String url = "http://192.168.194.78:3000/api/";
     String username;
     String name;
     String password;

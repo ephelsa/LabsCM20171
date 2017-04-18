@@ -34,5 +34,8 @@ public interface RestInterface {
                           @Field("age") String age,
                           @Field("photo") String photo);
 
+    @GET("Eventos")
+    Call<List<Evento>> getEvents();
+
 
 }
