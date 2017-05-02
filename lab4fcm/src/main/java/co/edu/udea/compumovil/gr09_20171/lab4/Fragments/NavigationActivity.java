@@ -1,10 +1,15 @@
-package co.edu.com.compumovil.gr09_20171.lab3;
+package co.edu.udea.compumovil.gr09_20171.lab4.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,27 +17,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import co.edu.com.compumovil.gr09_20171.lab3.Otros.AdminSQLiteOpenHelper;
-import co.edu.com.compumovil.gr09_20171.lab3.Otros.InfoUsuario;
+import com.bumptech.glide.Glide;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class Navegacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import co.edu.udea.compumovil.gr09_20171.lab4.R;
 
-    //private final String filename = "registro.txt";
-    InfoUsuario infoUsuario;
-    //private FileOutputStream outputStream;
-    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "compumovil", null, 1);
+public class NavigationActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+
     private Fragment perfil, about,event;
+    private GoogleApiClient googleApiClient;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_navegacion);
-        infoUsuario = (InfoUsuario) getIntent().getExtras().getSerializable("datos");
+        setContentView(R.layout.activity_navigation);
         setTitle(R.string.title_activity_navegacion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,9 +83,38 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
         nav_header_name = (TextView) header.findViewById(R.id.navigation_header_container_name);
         //nav_image.setImageBitmap(admin.getFotoUser(username));
-        nav_header_user.setText(infoUsuario.getUsername());
-        nav_header_email.setText(infoUsuario.getEmail());
-        nav_header_name.setText(infoUsuario.getName());
+        //nav_header_user.setText(infoUsuario.getUsername());
+        //nav_header_email.setText(infoUsuario.getEmail());
+        //nav_header_name.setText(infoUsuario.getName());
+
+    //Firebase
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener(){
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+            }
+        };
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            nav_header_name.setText(user.getDisplayName());
+            nav_header_email.setText(user.getEmail());
+            nav_header_user.setText(user.getUid());
+            Glide.with(this).load(user.getPhotoUrl()).into(nav_image);
+
+          } else {
+            goLoginScreen();
+        }
 
     }
 
@@ -87,7 +131,7 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navegacion, menu);
+        getMenuInflater().inflate(R.menu.navigation, menu);
 
         return true;
     }
@@ -116,46 +160,81 @@ public class Navegacion extends AppCompatActivity implements NavigationView.OnNa
         int id = item.getItemId();
 
         if (id == R.id.nav_perfil) {
-            setTitle(R.string.nav_perfil);
+           /* setTitle(R.string.nav_perfil);
             perfil = new Perfil();
             Bundle args = new Bundle();
             args.putSerializable("dat", infoUsuario);
             perfil.setArguments(args);
             fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
-
+*/
 
         } else if (id == R.id.nav_eventos) {
-            setTitle(R.string.nav_eventos);
+           /* setTitle(R.string.nav_eventos);
             event=new Principal();
             fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
-
+*/
         } else if (id == R.id.nav_configuraciones) {
-            setTitle(R.string.nav_configuraciones);
+          //  setTitle(R.string.nav_configuraciones);
 
         } else if (id == R.id.nav_about) {
-            setTitle(R.string.nav_about);
+          /*  setTitle(R.string.nav_about);
             about = new About();
 
             fragmentManager.beginTransaction().replace(R.id.fragment_content, about).commit();
-
+*/
         } else if (id == R.id.nav_logout) {
-            //setTitle(R.string.nav_logout);
-            /*try {
-                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                outputStream.write("".getBytes());
-                outputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
+            logout();
 
-            Intent mainIntent = new Intent().setClass(
-                    Navegacion.this, Login.class);
-            startActivity(mainIntent);
-            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(firebaseAuthListener != null){
+            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+        }
+    }
+
+    @Override//fallo de conection en firebase
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private void goLoginScreen() {
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    //Metodo para cerrar des login
+    private void logout(){
+        FirebaseAuth.getInstance().signOut();
+        if (AccessToken.getCurrentAccessToken() != null) {
+            LoginManager.getInstance().logOut();
+        } else  {
+            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+                @Override
+                public void onResult(@NonNull Status status) {
+                    if (status.isSuccess()) {
+                        goLoginScreen();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Hola error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+        goLoginScreen();
     }
 }

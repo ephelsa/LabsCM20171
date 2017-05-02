@@ -3,7 +3,7 @@
 
     <!--Actividad de login-->
     <string name="txPasswordLogin">Contraseña</string>
-    <string name="txUserLogin">Usuario</string>
+    <string name="txUserLogin">Correo</string>
     <string name="txIngLogin">Ingresar</string>
     <!-- Actividad Registro -->
     <string name="Email">Correo</string>
@@ -13,6 +13,8 @@
 
 
     <!-- Errores y confirmaciones  -->
+    <string name="error_login">Ocurrió un error al ingresar</string>
+    <string name="not_log_in">No se pudo iniciar  sesión</string>
     <string name="ErrorUsuario">El usuario no puede ser vacio</string>
     <string name="ErrorCorreo">El correo no puede ser vacio</string>
     <string name="ErrorPass">La contraseña no puede ser vacio</string>
@@ -47,8 +49,8 @@
     <!--Facebook-->
     <string name="facebook_app_id">1404333169610657</string>
     <string name="cancel_login">Se canceló la operación</string>
-    <string name="error_login">Ocurrió un error al ingresar</string>
-    <string name="not_log_in">No se pudo iniciar  sesión</string>
+
+    <string name="title_activity_navigation">NavigationActivity</string>
 
 </resources>
 
