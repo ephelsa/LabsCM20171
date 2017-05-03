@@ -11,14 +11,14 @@ import java.util.Date;
  */
 @IgnoreExtraProperties
 public class PostEvent {
-    public String uId;
-    public String author;
-    public String title;
-    public String fecha;
-    public int score=0;
-    public String location;
-    public String info;
-    public Uri photo;
+    private String uId;
+    private String author;
+    private String title;
+    private String fecha;
+    private int score=0;
+    private String location;
+    private String info;
+    private Uri photo;
 
     public PostEvent(){
 
@@ -31,6 +31,70 @@ public class PostEvent {
         this.fecha = fecha;
         this.location = location;
         this.info = info;
+        this.photo = photo;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public Uri getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Uri photo) {
         this.photo = photo;
     }
 }
