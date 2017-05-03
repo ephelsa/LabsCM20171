@@ -16,21 +16,23 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Fragments.LoginActivity" />
         <activity
             android:name=".Fragments.NavigationActivity"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragments.NavegationFragments.PerfilActivity"></activity>
+        <activity android:name=".Fragments.NavegationFragments.PerfilActivity" />
+        <activity
+            android:name=".Fragments.NavegationFragments.EventsViewActivity"
+            android:label="@string/title_activity_events_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

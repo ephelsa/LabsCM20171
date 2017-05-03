@@ -33,6 +33,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventsViewActivity;
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.PerfilActivity;
 import co.edu.udea.compumovil.gr09_20171.lab4.R;
 
 public class NavigationActivity extends AppCompatActivity
@@ -160,19 +162,16 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_perfil) {
-           /* setTitle(R.string.nav_perfil);
-            perfil = new Perfil();
-            Bundle args = new Bundle();
-            args.putSerializable("dat", infoUsuario);
-            perfil.setArguments(args);
+            setTitle(R.string.nav_perfil);
+            perfil = new PerfilActivity();
             fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
-*/
+
 
         } else if (id == R.id.nav_eventos) {
-           /* setTitle(R.string.nav_eventos);
-            event=new Principal();
+            setTitle(R.string.nav_eventos);
+            event=new EventsViewActivity();
             fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
-*/
+
         } else if (id == R.id.nav_configuraciones) {
           //  setTitle(R.string.nav_configuraciones);
 

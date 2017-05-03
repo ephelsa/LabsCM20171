@@ -51,6 +51,12 @@
     <string name="cancel_login">Se canceló la operación</string>
 
     <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_events_view">EventsViewActivity</string>
+    <string name="perfilNavegation">Perfil</string>
+    <string name="eventosNavegation">Eventos</string>
+    <string name="configuracionesNavegation">Configuraciones</string>
+    <string name="aboutNavegation">About</string>
+    <string name="logoutNavegation">Logout</string>
 
 </resources>
 
