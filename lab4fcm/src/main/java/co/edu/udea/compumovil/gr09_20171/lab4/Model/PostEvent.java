@@ -15,16 +15,16 @@ public class PostEvent {
     private String author;
     private String title;
     private String fecha;
-    private int score=0;
+    private float score=0;
     private String location;
     private String info;
-    private Uri photo;
+    private String photo;
 
     public PostEvent(){
 
     }
 
-    public PostEvent(String uId, String author, String title, String fecha, String location, String info, Uri photo) {
+    public PostEvent(String uId, String author, String title, String fecha, String location, String info, String photo) {
         this.uId = uId;
         this.author = author;
         this.title = title;
@@ -66,11 +66,11 @@ public class PostEvent {
         this.fecha = fecha;
     }
 
-    public int getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(float score) {
         this.score = score;
     }
 
@@ -90,11 +90,11 @@ public class PostEvent {
         this.info = info;
     }
 
-    public Uri getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Uri photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }

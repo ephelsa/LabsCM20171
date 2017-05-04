@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telecom.Call;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -32,12 +33,14 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.CreateEvent;
 import co.edu.udea.compumovil.gr09_20171.lab4.MainActivity;
 import co.edu.udea.compumovil.gr09_20171.lab4.R;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private Button registro;
 
 
     private FirebaseAuth firebaseAuth;
@@ -51,7 +54,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        registro=(Button) findViewById(R.id.bttReg);
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, CreateEvent.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
+            }
+        });
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()

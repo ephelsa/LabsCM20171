@@ -71,6 +71,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         ImageView foto;
         TextView nombre, edad;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
 
