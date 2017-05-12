@@ -1,23 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.CreateEvent">
 
+    <ImageView
+        android:id="@+id/CEImagen"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/CEtxtv1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CEImagen"
+        android:layout_below="@+id/CEImagen"
+        android:layout_marginTop="5dp"
+        android:text="@string/EventTitle" />
 
     <EditText
-        android:id="@+id/CEventTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/CETitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/CEtxtv1"
+        android:layout_toEndOf="@+id/CEtxtv1" />
+
+    <TextView
+        android:id="@+id/CEtxtv2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CEtxtv1"
+        android:layout_below="@+id/CETitle"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventScore" />
+
+    <RatingBar
+        android:id="@+id/CEScore"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CETitle"
+        android:layout_alignTop="@+id/CEtxtv2"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize=".5" />
+
+    <TextView
+        android:id="@+id/CEtxtv3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CEtxtv2"
+        android:layout_below="@id/CEScore"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventDate" />
+
     <EditText
-        android:id="@+id/CEventDesc"
+        android:id="@+id/CEFecha"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CEScore"
+        android:layout_alignTop="@id/CEtxtv3"
+
+        android:layout_toEndOf="@id/CEtxtv3"
+        android:ems="10"
+        android:inputType="date" />
+
+
+    <TextView
+        android:id="@+id/CEtxtv4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CEtxtv3"
+        android:layout_below="@+id/CEFecha"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventLocation" />
+
+    <EditText
+        android:id="@+id/CELocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/CEtxtv4"
+        android:layout_toRightOf="@+id/CEtxtv4" />
+
+
+    <TextView
+        android:id="@+id/CEtxtv5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CELocation"
+
+        android:text="@string/EventInfo" />
+
+    <EditText
+        android:id="@+id/CEInfo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/CEtxtv5"
+        android:inputType="textMultiLine" />
+
     <Button
-        android:id="@+id/CECreate"
+        android:id="@+id/CEBtnPost"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CEInfo"
+        android:layout_centerInParent="true"
+        android:text="@string/EventPost"
+        />
+
+
+</RelativeLayout>

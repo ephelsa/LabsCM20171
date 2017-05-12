@@ -57,6 +57,12 @@
     <string name="configuracionesNavegation">Configuraciones</string>
     <string name="aboutNavegation">About</string>
     <string name="logoutNavegation">Logout</string>
+    <string name="EventTitle">Nombre del evento</string>
+    <string name="EventScore">Puntuacion</string>
+    <string name="EventDate">Fecha</string>
+    <string name="EventLocation">Ubicación</string>
+    <string name="EventInfo">Descripción</string>
+    <string name="EventPost">Publicar</string>
 
 </resources>
 

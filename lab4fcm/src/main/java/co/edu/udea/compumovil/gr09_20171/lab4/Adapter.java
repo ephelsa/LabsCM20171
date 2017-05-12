@@ -43,7 +43,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.EventsViewHolder> {
         final PostEvent event = events.get(events.size()-1-position);
         Glide.with(context).load(event.getPhoto()).into(holder.imageView);
         holder.title.setText(event.getTitle());
-        holder.descri.setText(event.getInfo());
+        if(event.getInfo().length()>=60) {
+            holder.descri.setText(event.getInfo().substring(0, 60) + "...");
+        }else{
+            holder.descri.setText(event.getInfo());
+        }
         holder.ratingBar.setRating(event.getScore());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
