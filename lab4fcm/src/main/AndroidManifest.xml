@@ -33,7 +33,8 @@
             android:name=".Fragments.NavegationFragments.EventsViewActivity"
             android:label="@string/title_activity_events_view"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Fragments.NavegationFragments.CreateEvent"/>
+        <activity android:name=".Fragments.NavegationFragments.CreateEvent" />
+        <activity android:name=".Fragments.NavegationFragments.UpdatePerfilActivity"></activity>
     </application>
 
 </manifest>
