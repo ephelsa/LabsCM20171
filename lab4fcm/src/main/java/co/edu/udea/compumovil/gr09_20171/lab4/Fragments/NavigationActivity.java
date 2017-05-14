@@ -32,6 +32,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventsViewActivity;
 import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.PerfilActivity;
@@ -117,6 +118,10 @@ public class NavigationActivity extends AppCompatActivity
           } else {
             goLoginScreen();
         }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        setTitle(R.string.nav_perfil);
+        perfil = new PerfilActivity();
+        fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
 
     }
 
@@ -211,7 +216,6 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     private void goLoginScreen() {
-
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

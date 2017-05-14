@@ -22,11 +22,7 @@
             android:name=".Fragments.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Fragments.NavegationFragments.PerfilActivity" />
         <activity
@@ -34,7 +30,15 @@
             android:label="@string/title_activity_events_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Fragments.NavegationFragments.CreateEvent" />
-        <activity android:name=".Fragments.NavegationFragments.UpdatePerfilActivity"></activity>
+        <activity android:name=".Fragments.NavegationFragments.UpdatePerfilActivity" />
+        <activity android:name=".SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

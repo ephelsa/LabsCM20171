@@ -51,6 +51,7 @@ public class EventsViewActivity extends Fragment {
         events = new ArrayList<>();
         final Adapter adapter;
 
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         adapter = new Adapter(events);
 
