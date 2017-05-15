@@ -63,12 +63,12 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
         TextView textView_perfil_edad = (TextView) view.findViewById(R.id.textView_perfil_edad);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {}
-        textView_perfil_nombre.setText(user.getDisplayName());
-        textView_perfil_email.setText(user.getEmail());
-        textView_perfil_edad.setText(user.getUid());
-        Glide.with(getActivity()).load(user.getPhotoUrl()).into(foto);
-
+        if (user != null) {
+            textView_perfil_nombre.setText(user.getDisplayName());
+            textView_perfil_email.setText(user.getEmail());
+            textView_perfil_edad.setText(user.getUid());
+            Glide.with(getActivity()).load(user.getPhotoUrl()).into(foto);
+        }
 
         return view;
     }

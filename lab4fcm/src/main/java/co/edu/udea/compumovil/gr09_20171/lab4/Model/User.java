@@ -14,7 +14,7 @@ public class User {
     public String email;
     public int age;
     public Uri photoUrl;
-    public String uId;
+
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)

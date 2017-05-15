@@ -104,14 +104,14 @@
         android:layout_below="@id/CEtxtv5"
         android:inputType="textMultiLine" />
 
-    <Button
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/CEBtnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CEInfo"
-        android:layout_centerInParent="true"
-        android:text="@string/EventPost"
-        />
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_navigation_check_24"/>
 
 </RelativeLayout>

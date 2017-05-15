@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -45,7 +46,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
     private ImageView eventphoto;
     private EditText titlev, fechav, locationv, information;
     private RatingBar score;
-    private Button create;
+    private FloatingActionButton create;
     private Uri selectedImage;
     private String Uid;
     private Bitmap img;
@@ -71,7 +72,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
         locationv = (EditText) view.findViewById(R.id.CELocation);
         information = (EditText) view.findViewById(R.id.CEInfo);
         score = (RatingBar) view.findViewById(R.id.CEScore);
-        create = (Button) view.findViewById(R.id.CEBtnPost);
+        create = (FloatingActionButton) view.findViewById(R.id.CEBtnPost);
         fechav.setOnClickListener(this);
         eventphoto.setOnClickListener(this);
         create.setOnClickListener(this);
