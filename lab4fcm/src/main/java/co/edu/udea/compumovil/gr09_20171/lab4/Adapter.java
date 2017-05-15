@@ -1,6 +1,10 @@
 package co.edu.udea.compumovil.gr09_20171.lab4;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +19,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.CreateEvent;
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventViewInfoActivity;
+import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventsViewActivity;
 import co.edu.udea.compumovil.gr09_20171.lab4.Model.PostEvent;
 
 /**
@@ -25,6 +32,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.EventsViewHolder> {
 
     List<PostEvent> events;
     private Context context = null;
+
 
     public Adapter(List<PostEvent> events) {
         this.events = events;
@@ -53,8 +61,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.EventsViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Nombre: " + event.getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                Fragment enventview  = new EventViewInfoActivity();
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("data",event);
+                enventview.setArguments(bundle);
+                fragmentManager.beginTransaction().replace(R.id.fragment_content, enventview).commit();
+
             }
         });
     }

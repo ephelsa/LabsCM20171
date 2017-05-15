@@ -4,13 +4,14 @@ import android.net.Uri;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by julian on 3/05/17.
  */
 @IgnoreExtraProperties
-public class PostEvent {
+public class PostEvent implements Serializable {
     private String uId;
     private String author;
     private String title;

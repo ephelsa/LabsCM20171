@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventViewInfoActivity">
+
+    <ImageView
+        android:id="@+id/InImagen"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/Intxtv1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/InImagen"
+        android:layout_below="@+id/InImagen"
+        android:layout_marginTop="5dp"
+        android:text="@string/EventTitle" />
+
+    <TextView
+        android:id="@+id/InTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/Intxtv1"
+        android:layout_toEndOf="@+id/Intxtv1"
+        android:text="Evento"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/Intxtv2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Intxtv1"
+        android:layout_below="@+id/InTitle"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventScore" />
+
+    <RatingBar
+        android:id="@+id/InScore"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/InTitle"
+        android:layout_alignTop="@+id/Intxtv2"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize=".5" />
+
+    <TextView
+        android:id="@+id/Intxtv3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Intxtv2"
+        android:layout_below="@id/InScore"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventDate" />
+
+    <TextView
+        android:id="@+id/InFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/InScore"
+        android:layout_alignTop="@id/Intxtv3"
+        android:layout_toEndOf="@id/Intxtv3"
+        android:ems="10"
+        android:inputType="date"
+        android:text="12/12/12"
+        android:textSize="25dp"/>
+
+
+    <TextView
+        android:id="@+id/Intxtv4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Intxtv3"
+        android:layout_below="@+id/InFecha"
+        android:layout_marginTop="2dp"
+        android:text="@string/EventLocation" />
+
+    <TextView
+        android:id="@+id/InLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Intxtv4"
+        android:layout_toRightOf="@+id/Intxtv4"
+        android:text="Hola mundo"
+        android:textSize="25dp"/>
+
+
+    <TextView
+        android:id="@+id/Intxtv5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/InLocation"
+
+        android:text="@string/EventInfo" />
+
+    <TextView
+        android:id="@+id/InInfo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/Intxtv5"
+        android:inputType="textMultiLine" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/CEInBtnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_menu_revert"/>
+
+
+</RelativeLayout>
