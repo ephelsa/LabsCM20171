@@ -93,22 +93,16 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
                 break;
             case R.id.CEBtnPost:
                 subirImagen(UUID.randomUUID().toString());
-               /* CrearEvento(titlev.getText().toString(),
-                        fechav.getText().toString(),
-                        locationv.getText().toString(),
-                        information.getText().toString(),
-                        UUID.randomUUID().toString());
-                       */ //"https://firebasestorage.googleapis.com/v0/b/lab4fcm-fc89d.appspot.com/o/ImgEvents%2FDEFAULT.jpg?alt=media&token=81462715-1cec-4f59-b257-428f32ab72e1");
                 break;
         }
     }
 
-    private void CrearEvento(final String title, final String fecha, final String location, final String info, final String photo) {
+    private void CrearEvento(final String title, final String fecha, final float score, final String location, final String info, final String photo) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference eventReference = database.getReference(EVENTS_REFERENCE);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
-        PostEvent event = new PostEvent(user.getUid(), user.getDisplayName(), title, fecha, location, info, photo);
+        PostEvent event = new PostEvent(user.getUid(), user.getDisplayName(), title, fecha, score, location, info, photo);
 
         boolean result = eventReference.push().setValue(event).isComplete();
         toEventView();
@@ -138,6 +132,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
 
                         CrearEvento(titlev.getText().toString(),
                                 fechav.getText().toString(),
+                                score.getRating(),
                                 locationv.getText().toString(),
                                 information.getText().toString(),
                                 taskSnapshot.getDownloadUrl().toString());
@@ -146,6 +141,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
             } else {
                 CrearEvento(titlev.getText().toString(),
                         fechav.getText().toString(),
+                        score.getRating(),
                         locationv.getText().toString(),
                         information.getText().toString(),
                         "https://firebasestorage.googleapis.com/v0/b/lab4fcm-fc89d.appspot.com/o/ImgEvents%2FDEFAULT.jpg?alt=media&token=81462715-1cec-4f59-b257-428f32ab72e1");

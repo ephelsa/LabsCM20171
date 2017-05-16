@@ -16,7 +16,7 @@ public class PostEvent implements Serializable {
     private String author;
     private String title;
     private String fecha;
-    private float score=0;
+    private float score;
     private String location;
     private String info;
     private String photo;
@@ -25,11 +25,12 @@ public class PostEvent implements Serializable {
 
     }
 
-    public PostEvent(String uId, String author, String title, String fecha, String location, String info, String photo) {
+    public PostEvent(String uId, String author, String title, String fecha, float score, String location, String info, String photo) {
         this.uId = uId;
         this.author = author;
         this.title = title;
         this.fecha = fecha;
+        this.score = score;
         this.location = location;
         this.info = info;
         this.photo = photo;

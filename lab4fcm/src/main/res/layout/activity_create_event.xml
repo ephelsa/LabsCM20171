@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/CETitle"
         android:layout_alignTop="@+id/CEtxtv2"
+android:isIndicator="false"
         android:numStars="5"
         android:rating="5"
         android:stepSize=".5" />

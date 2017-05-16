@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -67,7 +68,7 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
 
         View view = inflater.inflate(R.layout.activity_perfil, container, false);
 
-        Button actualizar = (Button) view.findViewById(R.id.Button_perfil_actualizar);
+        FloatingActionButton actualizar = (FloatingActionButton) view.findViewById(R.id.Button_perfil_actualizar);
         foto = (ImageView) view.findViewById(R.id.imageView_perfil_foto);
         textView_perfil_nombre = (TextView) view.findViewById(R.id.textView_perfil_nombre);
         textView_perfil_email = (TextView) view.findViewById(R.id.textView_perfil_email);

@@ -126,30 +126,30 @@ public class NavigationActivity extends AppCompatActivity
         ;
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        database.getReference("Users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-               // dataSnapshot.child(user.getUid());
-                userUid = dataSnapshot.getValue(User.class);
-                nav_header_user.setText(userUid.getUsername());
-                nav_header_email.setText(userUid.getEmail());
-                Glide.with(getApplicationContext()).load(userUid.getPhotoUrl()).into(nav_image);
 
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w("d", "d");
-            }
-        });
 
         if (user != null)
 
         {
 
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            database.getReference("Users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // dataSnapshot.child(user.getUid());
+                    userUid = dataSnapshot.getValue(User.class);
+                    nav_header_user.setText(userUid.getUsername());
+                    nav_header_email.setText(userUid.getEmail());
+                    Glide.with(getApplicationContext()).load(userUid.getPhotoUrl()).into(nav_image);
 
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w("d", "d");
+                }
+            });
 
         } else
 
