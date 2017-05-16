@@ -17,13 +17,24 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import co.edu.udea.compumovil.gr09_20171.lab4.Model.User;
 import co.edu.udea.compumovil.gr09_20171.lab4.R;
 
 public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient googleApiClient;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    private ImageView foto;
+    private TextView textView_perfil_nombre;
+    private TextView textView_perfil_email;
+    private TextView textView_perfil_edad;
+    private FirebaseDatabase database=FirebaseDatabase.getInstance();
+
     public PerfilActivity() {
         //Vacío
     }
@@ -46,7 +57,7 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
                 .build();
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuthListener = new FirebaseAuth.AuthStateListener(){
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -57,17 +68,30 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
         View view = inflater.inflate(R.layout.activity_perfil, container, false);
 
         Button actualizar = (Button) view.findViewById(R.id.Button_perfil_actualizar);
-        ImageView foto = (ImageView) view.findViewById(R.id.imageView_perfil_foto);
-        TextView textView_perfil_nombre = (TextView) view.findViewById(R.id.textView_perfil_nombre);
-        TextView textView_perfil_email = (TextView) view.findViewById(R.id.textView_perfil_email);
-        TextView textView_perfil_edad = (TextView) view.findViewById(R.id.textView_perfil_edad);
+        foto = (ImageView) view.findViewById(R.id.imageView_perfil_foto);
+        textView_perfil_nombre = (TextView) view.findViewById(R.id.textView_perfil_nombre);
+        textView_perfil_email = (TextView) view.findViewById(R.id.textView_perfil_email);
+        textView_perfil_edad = (TextView) view.findViewById(R.id.textView_perfil_edad);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
-            textView_perfil_nombre.setText(user.getDisplayName());
-            textView_perfil_email.setText(user.getEmail());
-            textView_perfil_edad.setText(user.getUid());
-            Glide.with(getActivity()).load(user.getPhotoUrl()).into(foto);
+            final String userId = user.getUid();
+            database.getReference("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User user1=dataSnapshot.getValue(User.class);
+                    textView_perfil_nombre.setText(user1.getUsername());
+                    textView_perfil_email.setText(user1.getEmail());
+                    textView_perfil_edad.setText(user1.getAge());
+                    Glide.with(getActivity()).load(user1.getPhotoUrl()).into(foto);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
         }
 
         return view;
@@ -77,11 +101,12 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
     @Override
     public void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
-        if(googleApiClient!=null){
+        if (googleApiClient != null) {
             googleApiClient.connect();
         }
     }
@@ -89,14 +114,13 @@ public class PerfilActivity extends Fragment implements GoogleApiClient.OnConnec
     @Override
     public void onStop() {
         super.onStop();
-        if(firebaseAuthListener != null){
+        if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
-        if(googleApiClient!=null && googleApiClient.isConnected()){
+        if (googleApiClient != null && googleApiClient.isConnected()) {
             googleApiClient.disconnect();
         }
     }
-
 
 
 }

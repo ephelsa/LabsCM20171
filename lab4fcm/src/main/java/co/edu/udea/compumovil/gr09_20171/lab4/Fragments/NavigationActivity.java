@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,19 +33,29 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.EventsViewActivity;
 import co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragments.PerfilActivity;
+import co.edu.udea.compumovil.gr09_20171.lab4.Model.PostEvent;
+import co.edu.udea.compumovil.gr09_20171.lab4.Model.User;
 import co.edu.udea.compumovil.gr09_20171.lab4.R;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
-    private Fragment perfil, about,event;
+    private Fragment perfil, about, event;
     private GoogleApiClient googleApiClient;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    ImageView nav_image;
+    TextView nav_header_user;
+    TextView nav_header_email;
+
+    private User userUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,52 +87,88 @@ public class NavigationActivity extends AppCompatActivity
 
         //Editar el Head del Navigation Drawer
         View header = navigationView.getHeaderView(0);
-        ImageView nav_image;
-        TextView nav_header_user;
-        TextView nav_header_email;
-        TextView nav_header_name;
+
 
         nav_image = (ImageView) header.findViewById(R.id.imageView);
         nav_header_user = (TextView) header.findViewById(R.id.navigation_header_container_user);
         nav_header_email = (TextView) header.findViewById(R.id.navigation_header_container_correo);
-        nav_header_name = (TextView) header.findViewById(R.id.navigation_header_container_name);
         //nav_image.setImageBitmap(admin.getFotoUser(username));
         //nav_header_user.setText(infoUsuario.getUsername());
         //nav_header_email.setText(infoUsuario.getEmail());
         //nav_header_name.setText(infoUsuario.getName());
 
-    //Firebase
+        //Firebase
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         googleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+                .
+
+                        enableAutoManage(this, this)
+                .
+
+                        addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .
+
+                        build();
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuthListener = new FirebaseAuth.AuthStateListener(){
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener()
+
+        {
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
             }
-        };
+        }
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {
-            nav_header_name.setText(user.getDisplayName());
-            nav_header_email.setText(user.getEmail());
-            nav_header_user.setText(user.getUid());
-            Glide.with(this).load(user.getPhotoUrl()).into(nav_image);
+        ;
 
-          } else {
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference("Users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               // dataSnapshot.child(user.getUid());
+                userUid = dataSnapshot.getValue(User.class);
+                nav_header_user.setText(userUid.getUsername());
+                nav_header_email.setText(userUid.getEmail());
+                Glide.with(getApplicationContext()).load(userUid.getPhotoUrl()).into(nav_image);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("d", "d");
+            }
+        });
+
+        if (user != null)
+
+        {
+
+
+
+        } else
+
+        {
             goLoginScreen();
         }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
+
         setTitle(R.string.nav_perfil);
-        perfil = new PerfilActivity();
-        fragmentManager.beginTransaction().replace(R.id.fragment_content, perfil).commit();
+
+        perfil = new
+
+                PerfilActivity();
+        fragmentManager.beginTransaction().
+
+                replace(R.id.fragment_content, perfil).
+
+                commit();
 
     }
 
@@ -174,11 +221,11 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_eventos) {
             setTitle(R.string.nav_eventos);
-            event=new EventsViewActivity();
-            fragmentManager.beginTransaction().replace(R.id.fragment_content,event).commit();
+            event = new EventsViewActivity();
+            fragmentManager.beginTransaction().replace(R.id.fragment_content, event).commit();
 
         } else if (id == R.id.nav_configuraciones) {
-          //  setTitle(R.string.nav_configuraciones);
+            //  setTitle(R.string.nav_configuraciones);
 
         } else if (id == R.id.nav_about) {
           /*  setTitle(R.string.nav_about);
@@ -205,7 +252,7 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         super.onStop();
-        if(firebaseAuthListener != null){
+        if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
     }
@@ -222,11 +269,11 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     //Metodo para cerrar des login
-    private void logout(){
+    private void logout() {
         FirebaseAuth.getInstance().signOut();
         if (AccessToken.getCurrentAccessToken() != null) {
             LoginManager.getInstance().logOut();
-        } else  {
+        } else {
             Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
                 @Override
                 public void onResult(@NonNull Status status) {

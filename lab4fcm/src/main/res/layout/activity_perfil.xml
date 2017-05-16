@@ -23,25 +23,33 @@ tools:context="co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragme
 
     <ImageView
         android:id="@+id/imageView_perfil_foto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
+
+</LinearLayout>
     <TextView
+        android:layout_below="@+id/linear_perfil"
+        android:layout_centerHorizontal="true"
         android:id="@+id/textView_perfil_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="JUlian"
+        android:textSize="20dp"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-</LinearLayout>
 
 <TextView
     android:id="@+id/textView_perfil_email"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_below="@id/linear_perfil"
+    android:layout_below="@id/textView_perfil_nombre"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:text="Hola Mundo"
+    android:textSize="20dp"
     android:textStyle="bold" />
 
 <TextView
@@ -51,6 +59,8 @@ tools:context="co.edu.udea.compumovil.gr09_20171.lab4.Fragments.NavegationFragme
     android:layout_below="@id/textView_perfil_email"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:textSize="20dp"
+    android:text="50"
     android:textStyle="bold"/>
 
 <Button

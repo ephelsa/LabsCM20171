@@ -12,8 +12,8 @@ public class User {
 
     public String username;
     public String email;
-    public int age;
-    public Uri photoUrl;
+    public String age;
+    public String photoUrl;
 
 
     public User() {
@@ -25,4 +25,42 @@ public class User {
         this.email = email;
     }
 
+    public User(String username, String email, String age, String photoUrl) {
+        this.username = username;
+        this.email = email;
+        this.age = age;
+        this.photoUrl = photoUrl;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
 }
